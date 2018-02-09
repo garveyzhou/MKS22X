@@ -1,4 +1,4 @@
-public class QuennBoard{
+public class QueenBoard{
     private int[][] board;
     
     public QueenBoard(int size){
@@ -12,18 +12,24 @@ public class QuennBoard{
 
     private boolean addQueen(int r, int c){
 	board[r][c] = -1;
+	for(int j = c + 1; j< board.length; c++){
+	    board[r][j] += 1;
+	}
+	for (int i = r + 1, int j = c + 1; i < board.length && c< board.length; i++,c++){
+	}
+	return true;
     }
 
     private boolean removeQueen(int r,int c){
-	
+	return true;
     }
 
-    public STring toString(){
+    public String toString(){
 	String res = "";
 	for(int i = 0; i < board.length; i++){
-	    res += "["
-	    for(int j = 0; j < board[].length; j++){
-		if(board[i][j] == 0){
+	    res += "[ ";
+	    for(int j = 0; j < board[i].length; j++){
+		if(board[i][j] == -1){
 		    res += "Q";
 		}
 		else{
@@ -32,4 +38,12 @@ public class QuennBoard{
 	    }
 	    res += "]"+"\n";
 	}
+	return res;
     }
+
+
+    public static void main(String[] args){
+	QueenBoard a = new QueenBoard(5);
+	System.out.println(a.toString());
+    }
+}
