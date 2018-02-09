@@ -1,0 +1,35 @@
+public class QuennBoard{
+    private int[][] board;
+    
+    public QueenBoard(int size){
+	board = new int[size][size];
+	for (int i = 0; i < size; i++){
+	    for(int x = 0; x < size; x++){
+		board[i][x] = 0;
+	    }
+	}
+    }
+
+    private boolean addQueen(int r, int c){
+	board[r][c] = -1;
+    }
+
+    private boolean removeQueen(int r,int c){
+	
+    }
+
+    public STring toString(){
+	String res = "";
+	for(int i = 0; i < board.length; i++){
+	    res += "["
+	    for(int j = 0; j < board[].length; j++){
+		if(board[i][j] == 0){
+		    res += "Q";
+		}
+		else{
+		res += board[i][j] + " ";
+		}
+	    }
+	    res += "]"+"\n";
+	}
+    }
