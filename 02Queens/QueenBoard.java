@@ -12,15 +12,23 @@ public class QueenBoard{
 
     private boolean addQueen(int r, int c){
 	board[r][c] = -1;
-	for(int j = c + 1; j< board.length; c++){
-	    board[r][j] += 1;
-	}
-	for (int i = r + 1, int j = c + 1; i < board.length && c< board.length; i++,c++){
+	for(int j = c; i< board.length && r <board.length ;j++){
 	}
 	return true;
     }
 
     private boolean removeQueen(int r,int c){
+	if(board[r][c] != 0){
+	    return false;
+	}
+	
+	board[r][c] = 0;
+	for(int j = c + 1; j< board.length; j++){
+	    board[r][j] -= 1;
+	}
+	for(int i = r + 1,int j= c + 1;i < board.length && j < board.length; i++,j++){
+	    board[r][j] -= 1;
+	}
 	return true;
     }
 
@@ -33,7 +41,7 @@ public class QueenBoard{
 		    res += "Q";
 		}
 		else{
-		res += board[i][j] + " ";
+		    res += board[i][j] + " ";
 		}
 	    }
 	    res += "]"+"\n";
@@ -42,6 +50,15 @@ public class QueenBoard{
     }
 
 
+    public boolean solve(int col ){
+	if(col == data.length){
+	    return true;
+	}
+	for(int r = 0;r<data.length;r++){
+	    if(addQueen(r,col)){
+		solve(col+1);
+	    }
+	    
     public static void main(String[] args){
 	QueenBoard a = new QueenBoard(5);
 	System.out.println(a.toString());
