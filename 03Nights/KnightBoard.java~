@@ -1,0 +1,4 @@
+public class KnightBoard{
+    private int[][] board;
+
+}
