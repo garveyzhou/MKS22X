@@ -1,6 +1,7 @@
 public class KnightBoard{
     private int[][] board;
     private int[][] moves;
+    private int solutions;
     
     public KnightBoard(int r, int c){
 	moves = new int[8][2];
@@ -11,6 +12,7 @@ public class KnightBoard{
 		board[i][j] = 0;
 	    }
 	}
+	solutions = 0;
     }
 
     public String toString(){
@@ -37,7 +39,8 @@ public class KnightBoard{
 	    }
 	}
 	for( int i = 0; i < 8; i++){
-	    
+	    try{help(row + move[i][0],col + move[i][1],i)}
+	    catch{ArrayIndexOutOfBoundsException() e}
 	}    
     }
 
