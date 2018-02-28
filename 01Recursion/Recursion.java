@@ -22,10 +22,7 @@ public class Recursion{
 	if (n == count){
 	    return last1;
 	}
-	int next = last1 + last2;
-	last2 = last1;
-	last1 = next;
-	return fibHelper(count + 1,n,last2,last1);
+	return fibHelper(count + 1,n,last1,last1 + last2);
     }
 
     public double sqrt(double n){
@@ -49,15 +46,15 @@ public class Recursion{
 	System.out.println(rec.fib(0)); //0
 	System.out.println(rec.fib(1)); //1
 	System.out.println(rec.fib(2)); //1
-	System.out.println(rec.fib(4)); //3
+	System.out.println(rec.fib(3)); //3
 	System.out.println(rec.fib(6)); //8
 	System.out.println(rec.fact(10));
-	System.out.println(rec.fact(0));
+	System.out.println(rec.fact(1));
 	//System.out.println(rec.fact(-100));
 	System.out.println(rec.sqrt(0));
 	//System.out.println(rec.sqrt(-10));
 	System.out.println(rec.sqrt(100));
 	System.out.println(rec.sqrt(0.0036));
-	System.out.println(rec.fib(-11)); 
+	//System.out.println(rec.fib(-11)); 
     }
 }
