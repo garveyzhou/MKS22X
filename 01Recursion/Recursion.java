@@ -36,7 +36,7 @@ public class Recursion{
     }
 
     public double helper(double n, double guess){
-	if(((guess * guess / n) < 1.001) && ((guess * guess / n) > 0.999)){
+	if(((guess * guess / n) < 1.00001) && ((guess * guess / n) > 0.99999)){
 	    return guess;
 	}
 	return helper(n,(n/guess +guess)/2);
