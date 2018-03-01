@@ -34,7 +34,7 @@ public class KnightBoard{
     }
     
     public boolean solve(int row,int col){
-	if(row > board.length || col >= board[0].length || row < 0 || col < 0){
+	if(row > board.length || col > board[0].length || row < 0 || col < 0){
 	    throw new IllegalArgumentException();
 	}
 	for(int i = 0; i < board.length; i++){
@@ -68,7 +68,7 @@ public class KnightBoard{
     }
     
     public int countSolutions(int row,int col){
-	if(row > board.length || col >= board[0].length || row < 0 || col < 0){
+	if(row > board.length || col > board[0].length || row < 0 || col < 0){
 	    throw new IllegalArgumentException();
 	}
 	for(int i = 0; i < board.length; i++){
@@ -100,8 +100,9 @@ public class KnightBoard{
     
     public static void main(String[] args){
 	KnightBoard a = new KnightBoard(5,5);
-	//System.out.println(a.solve(0,0));
+	System.out.println(a.solve(0,0));
 	//System.out.println(a.toString());
+	System.out.println(a.solve(0,0));
 	System.out.println(a.countSolutions(0,0));
 	System.out.println(a.toString());
     }
