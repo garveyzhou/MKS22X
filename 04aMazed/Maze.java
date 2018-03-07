@@ -119,14 +119,17 @@ public class Maze{
     private int solve(int row, int col, int steps){ //you can add more parameters since this is private
 
 	//automatic animation! You are welcome.
+	
 	if(animate){
 	    clearTerminal();
 	    System.out.println(this);
 	    wait(20);
 	}
+	
 	if(maze[row][col] == 'E'){
 	    return steps;
 	}
+	
 	for (int i = 0; i< moves.length; i++){
 	    maze[row][col] = '@';
 	    if(maze[row + moves[i][0]][col + moves[i][1]] == ' ' || maze[row + moves[i][0]][col + moves[i][1]] == 'E'){
