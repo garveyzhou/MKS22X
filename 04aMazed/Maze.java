@@ -145,11 +145,11 @@ public class Maze{
     public static void main (String[]args){
 	try{
 	    Maze a = new Maze("maze.txt");
-	    //a.setAnimate(true);
-	    System.out.println(a.solve());
+	    a.setAnimate(true);
+	    a.solve();
 	    Maze b = new Maze("maze1.txt");
-	    // b.setAnimate(true);
-	    System.out.println(b.solve());
+	    b.setAnimate(true);
+	    b.solve();
 	}
 	catch (FileNotFoundException e){
 	}
