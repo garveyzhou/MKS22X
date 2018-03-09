@@ -53,6 +53,13 @@ public class USACO{
 	    }
 	}
     }
+
+    public static int silver(String filename){
+	try{ File f = new File(filename);
+	    Scanner s = new Scanner(f);
+
+
+	}catch(Exceptions e){};
     public static void main(String[]args){
     }
     
