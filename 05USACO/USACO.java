@@ -59,25 +59,26 @@ public class USACO{
     public static int silver(String filename){
 	try{ File f = new File(filename);
 	    Scanner s = new Scanner(f);
-	    int R  = s.nextInt();
-	    int C = s.nextInt();
-	    int T = s.nextInt();
+	    String[] num = s.nextLine().split(" ");
+	    int R = Integer.parseInt(num[0]);
+	    int C = Integer.parseInt(num[1]);
+	    int T = Integer.parseInt(num[2]);
 	    char[][] map = new char[R][C];
-	    for(int i = 0; i< R; i++){
-		String row = s.nextLine();
-		for(int j = 0; j< C ; j++){
-		    map[i][j] = row.charAt(j);
+	    for(int i = 0; i < R; i++){
+		String line = s.nextLine();
+		for(int j = 1; j < C ; j++){
+		    map[i][j] = line.charAt(j);
 		}
 	    }
 	    int[][] newarr = new int [R][C];
 	    int[][] oldarr = new int[R][C];
 
-	    for(int i = 0; i<R;i++){
-		for(int j = 0; j <C: j++){
+	    for(int i = 0; i< R ;i++){
+		for(int j = 0; j <C; j++){
 		    if (map[i][j] == '*'){
 			oldarr[i][j] = -1;
 		    }
-		    else{oldarr[i][j] == 0;
+		    else{oldarr[i][j] = 0;
 		    }
 		}
 	    }
@@ -90,19 +91,61 @@ public class USACO{
 	    if((R2-R1+C2-C1)%2 != T%2){
 		return 0;}
 	    
-	}catch(Exception e){};
-	return 0;
+	    for(int i = 0 ; i < T; i++){
+		for(int x = 0; x <R ; x++){
+		    for(int y = 0;y< C; y++){
+			newarr[x][y] = sumNeighbors(x,y,oldarr);;
+		    }
+		}
+		for(int x = 0; x< R; x++){
+		    for(int y = 0;y<C; y++){
+			oldarr[x][y] = newarr[x][y];
+		    }
+		}
+		//	System.out.println(toString(oldarr));
+	    }
+	    return newarr[R2][C2];
+	}catch(FileNotFoundException e){};
+	return -1;
     }
 
-
-    public static void sumNeightbors(int r, int c,int arr){
+    public static boolean isValid( int r, int c,int[][] arr){
+	return (r < arr.length && r >= 0 && c < arr[0].length && c >= 0 && arr[r][c] != -1);
+    }    
+    public static int sumNeighbors(int r, int c,int[][] arr){
 	int[][] sides = {{0,1},{0,-1},{1,0},{-1,0}};
-	in sum = 0;
-	for (int i = 0 ; i< 4; i++){
-	    try{
-	    
+	int sum = 0;
+	try{
+	    for (int i = 0 ; i< 4; i++){
+		if ( arr[r][c] != -1){
+		    if(isValid(r + sides[i][0],c + sides[i][1],arr)){
+			sum += arr[r + sides[i][0]][c + sides[i][1]];
+		    }
+		
+		}
+		else{return -1;}
+	    }
+	}
+	catch(ArrayIndexOutOfBoundsException e){}
+	//	System.out.println(toString(arr));
+	return sum;
+    }
+
+    public static String toString(int[][] arr){
+	String str = "";
+	for (int r = 0; r < arr.length; r++){
+	    for (int c = 0; c < arr[r].length; c++){
+		str += arr[r][c] + " ";
+	    }
+	    str += "\n";
+	}
+	return str;
+    }
+    
     public static void main(String[]args){
 	System.out.println(USACO.bronze("Lakemake1.txt"));
+	System.out.println(USACO.silver("Cow.txt"));
+	USACO.silver("Cow.txt");
     }
     
 }
