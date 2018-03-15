@@ -5,17 +5,23 @@ public class Quick{
 	int pivot = (int)(Math.random()*(end-start)+start);
 	swap(data,start,pivot);
 	int i = start + 1;
-	while (i <=  end){
-	    if(data[i] <=  data[start]){
+	int lt = start + 1 ;
+	int gt = end;
+	while (i <=  gt){
+	    if(data[i] ==  data[start]){
 		i++;
 	    }
-	    else{swap(data,i,end);
-		end--;
+	    else if(data[i] > data[start]){
+		swap(data,i,gt);
+		gt -- ;
+	    }
+	    else{swap(data,i,lt);
+		lt++;
+		lt++;
 	    }
 	}
-	swap(data,start,end);
-	return end;
-	
+	swap(data,start,gt);
+	return gt;
     }
 
     private static void swap(int[]ary,int a, int b){                  
