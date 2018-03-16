@@ -7,16 +7,16 @@ public class Quick{
 	int i = start + 1;
 	int lt = start + 1 ;
 	int gt = end;
-	while (i <=  gt){
+	while (i <  gt){
 	    if(data[i] ==  data[start]){
 		i++;
 	    }
 	    else if(data[i] > data[start]){
 		swap(data,i,gt);
-		gt -- ;
+		gt-- ;
 	    }
 	    else{swap(data,i,lt);
-		lt++;
+		i++;
 		lt++;
 	    }
 	}
@@ -51,7 +51,15 @@ public class Quick{
 	}
 	return data[in];	
     }
+
+    public static void quickSort(int[] data){
+
+    }
     public static void main(String[]args){
-	    
+	int[] a = {1,2,1,3,0,2,0,0,1,0,2,3};
+	for(int i = 0; i< 10;i++){
+	    System.out.println(partition(a,0,11));
+	    System.out.println(toString(a));
+	}
     }
 }
