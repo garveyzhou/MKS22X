@@ -57,7 +57,7 @@ public class Quick{
 	return data[ends[0]];
     }
 
-    public static void quickSort(int[] data){
+    public static void quicksort(int[] data){
 	quickSortH(data,0,data.length -1);
     }
 
@@ -94,7 +94,7 @@ public class Quick{
 	    //System.out.println(toString(a));
 	    //System.out.println(quickselect(a,i));
 	}
-	quickSort(a);
+	quicksort(a);
 	System.out.println(toString(a));
     }
     
