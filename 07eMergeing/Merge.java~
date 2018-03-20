@@ -1,0 +1,15 @@
+public class Merge{
+
+    public static void mergesort(int[] data){
+	msort(data,0,data.length);
+    }
+
+    private static void msort(int[]data,int[]temp,int lo , int hi){
+
+    }
+
+    private static void merge(int[] data,int[]temp,int lo , int hi){
+
+    }
+
+}
