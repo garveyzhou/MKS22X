@@ -1,4 +1,5 @@
 import java.util.*;
+
 public class Quick{
 
     public static int[] partition(int[] data, int start, int end){
@@ -82,20 +83,27 @@ public class Quick{
 		    lt++;
 		}
 	    }
-	    quickSortH(data,0,lt-1);
+	    quickSortH(data,start,lt-1);
 	    quickSortH(data,gt+1,end);
 	}
     }
 
     public static void main(String[]args){
-	int[] a = {1,2,1,3,0,2,0,0,1,0,2,3};
-	for(int i = 0; i< a.length;i++){
-	    //System.out.println(partition(a,0,11));
-	    //System.out.println(toString(a));
-	    //System.out.println(quickselect(a,i));
+	int [] start = new int[1000000];
+	Random c = new Random();
+	for(int i = 0; i < start.length ; i++){
+	    start[i] = c.nextInt();
 	}
-	quicksort(a);
-	System.out.println(toString(a));
+	//System.out.println(toString(start));
+	int [] result = Arrays.copyOf(start,start.length);
+	
+
+	long startTime = System.currentTimeMillis();
+	
+	Quick.quicksort(start);
+	 
+	long elapsedTime = System.currentTimeMillis() - startTime;
+	System.out.println(elapsedTime);
+	//System.out.println(toString(start));
     }
-    
 }
