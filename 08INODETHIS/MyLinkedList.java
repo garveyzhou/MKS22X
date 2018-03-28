@@ -34,8 +34,21 @@ public class MyLinkedList{
 	    return s;
 	}
     }
+    public MyLinkedList(){
+    }
     
-
+    public String toString(){
+    }
+    public int get(n){
+    }
+    public void set(int index,int value){
+    }
+    public int size(){
+    }
+    public void add(int index,int value){
+    }
+    public void remove(int index){
+    }
 
     
 }
