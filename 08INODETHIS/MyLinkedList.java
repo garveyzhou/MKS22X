@@ -9,11 +9,15 @@ public class MyLinkedList{
 	private int data;
 	public Node(Node a,Node b ,int info){
 	    prev = a;
+	    next = b;
+	    data= info;
 	}
 	public int getData(){
 	    return data;
 	}
-	
+	public int setData(int value){
+	    data = value;
+	}
 	public void setNext(Node n){
 	    next = n;
 	}
@@ -28,16 +32,17 @@ public class MyLinkedList{
 	}
 	public String toString(){
 	    String s = "";
-	    s += "[" + data + "]";
+	    s += data + "";
 	    return s;
 	}
     }
+    
     public MyLinkedList(){
 	size = 0;
     }
     
     public String toString(){
-	String str = "";
+	String str = "{";
 	Node current = first;
 	while(current != null){
 	    str += current;
@@ -46,9 +51,10 @@ public class MyLinkedList{
 	    }
 	    current = current.getNext();
 	}
-	return str;
+	return str + "}";
     }
-    private Node  getNode(int n){
+    
+    private Node getNode(int n){
 	Node current = first;
 	for(int i = 0; i< n; i++){
 	    current = current.getNext();
@@ -56,36 +62,60 @@ public class MyLinkedList{
 	return current;
     }
        
-    public int get(int n){
-	if( n >= size || n < 0){
+    public int get(int index){
+	if( index >= size || index < 0){
 	    throw new IndexOutOfBoundsException();
 	}
-	return getNode(n),getData();			 
+	return getNode(n).getData();			 
     }
+    
     public void set(int index,int value){
+	if( index >= size || index < 0){
+	    throw new IndexOutOfBoundsException();
+	}
+	getNode(index).setData(value);
     }
+    
     public int size(){
 	return size;
     }
+    
     public void add(int index,int value){
+	if( index >= size || index < 0){
+	    throw new IndexOutOfBoundsException();
+	}
+	Node a = Node(getNode(index - 1),getNode(index),value);
+	getNode(index-1).setNext(a);
+	getNode(index + 1).setPrev(a);
     }
+    
     public boolean add(int newData){
-	Node add = newNode(newData);
+	Node ToAdd = newNode(newData);
 	if (length == 0){
-	    first = add;
+	    first = ToAdd;
 	}
 	else{
-	    last.setNext(add);
+	    last.setNext(ToAdd);
 	    add.setPrev(last);
 	}
-	last = toAdd;
-	size ++;
+	last = ToAdd;
+	size++;
 	return true;
     }
+    
     public boolean remove(int value){
     }
+    
     public void remove(int index){
+	if( index >= size || index < 0){
+	    throw new IndexOutOfBoundsException();
+	}
+
     }
+    
+    public int getIndexOf(int value){
+    }
+    
     public void clear(){
 	first = null;
 	last = null;
