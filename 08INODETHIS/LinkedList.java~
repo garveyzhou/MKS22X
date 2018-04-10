@@ -1,8 +1,0 @@
-public class LinkedList{
-    private Node previous;
-    private Node next;
-    private int data;
-
-    private class Node{
-
-    }
