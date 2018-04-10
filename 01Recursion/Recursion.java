@@ -53,7 +53,7 @@ public class Recursion{
 	//System.out.println(rec.fact(-100));
 	System.out.println(rec.sqrt(0));
 	//System.out.println(rec.sqrt(-10));
-	System.out.println(rec.sqrt(100));
+	System.out.println(rec.sqrt(1));
 	System.out.println(rec.sqrt(0.0036));
 	//System.out.println(rec.fib(-11)); 
     }

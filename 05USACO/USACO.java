@@ -115,7 +115,6 @@ public class USACO{
     public static int sumNeighbors(int r, int c,int[][] arr){
 	int[][] sides = {{0,1},{0,-1},{1,0},{-1,0}};
 	int sum = 0;
-	try{
 	    for (int i = 0 ; i< 4; i++){
 		if ( arr[r][c] != -1){
 		    if(isValid(r + sides[i][0],c + sides[i][1],arr)){
@@ -125,8 +124,6 @@ public class USACO{
 		}
 		else{return -1;}
 	    }
-	}
-	catch(ArrayIndexOutOfBoundsException e){}
 	//	System.out.println(toString(arr));
 	return sum;
     }

@@ -1,7 +1,7 @@
 public class MyLinkedList{
-    private Node previous;
-    private Node next;
-    private int data;
+    private Node head;
+    private Node tail;
+    private int size;
 
     private class Node{
 	private Node prev;
