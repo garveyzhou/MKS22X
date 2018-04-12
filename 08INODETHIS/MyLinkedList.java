@@ -172,6 +172,9 @@ public class MyLinkedList{
 	last = null;
 	size = 0;
     }
+
+
+    
     //Crystal's driver
     public static void main(String[] args){
 	MyLinkedList a = new MyLinkedList();
