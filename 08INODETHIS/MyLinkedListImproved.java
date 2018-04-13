@@ -172,6 +172,7 @@ public class MyLinkedListImproved<T> extends Comparable<T> implements Iterable<T
 	    return s;
 	}
     }
+    
     private class Iter implements Iterator<T>{
 	Node next;
 	public Iter(Node n){
@@ -185,5 +186,19 @@ public class MyLinkedListImproved<T> extends Comparable<T> implements Iterable<T
 	}
 	public void remove(){
 	}
+    }
+
+    public Iterator<t> iterator{
+	return new Iter(first);
+    }
+
+    public int max(){
+	if(size == 0){
+	    return -1;
+	}
+	T max = first.getData();
+	int index  = 0;
+	for(Node n : 
+	    
     }
 }

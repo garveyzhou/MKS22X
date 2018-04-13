@@ -62,7 +62,7 @@ public class MyLinkedList{
 	return current;
     }
        
-    public int get(int index){
+    public Integer get(int index){
 	if( index >= size || index < 0){
 	    throw new IndexOutOfBoundsException();
 	}
