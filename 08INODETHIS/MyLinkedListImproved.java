@@ -1,41 +1,8 @@
-public class MyLinkedListImproved<T>{
+import jav.util.*;
+public class MyLinkedListImproved<T> extends Comparable<T> implements Iterable<T>{
     private Node first;
     private Node last;
     private int size;
-
-    private class Node{
-	private Node prev;
-	private Node next;
-	private T data;
-	public Node(T info){
-	    prev = null;
-	    next = null;
-	    data= info;
-	}
-	public T getData(){
-	    return data;
-	}
-	public void setData(T value){
-	    data = value;
-	}
-	public void setNext(Node n){
-	    next = n;
-	}
-	public Node getNext(){
-	    return next;
-	}
-	public void setPrev(Node p){
-	    prev = p;
-	}
-	public Node getPrev(){
-	    return prev;
-	}
-	public String toString(){
-	    String s = "";
-	    s += data + "";
-	    return s;
-	}
-    }
     
     public MyLinkedList(){
 	size = 0;
@@ -172,3 +139,51 @@ public class MyLinkedListImproved<T>{
 	last = null;
 	size = 0;
     }
+        private class Node{
+	private Node prev;
+	private Node next;
+	private T data;
+	public Node(T info){
+	    prev = null;
+	    next = null;
+	    data= info;
+	}
+	public T getData(){
+	    return data;
+	}
+	public void setData(T value){
+	    data = value;
+	}
+	public void setNext(Node n){
+	    next = n;
+	}
+	public Node getNext(){
+	    return next;
+	}
+	public void setPrev(Node p){
+	    prev = p;
+	}
+	public Node getPrev(){
+	    return prev;
+	}
+	public String toString(){
+	    String s = "";
+	    s += data + "";
+	    return s;
+	}
+    }
+    private class Iter implements Iterator<T>{
+	Node next;
+	public Iter(Node n){
+	    next = n;
+	}
+	public boolean hasNext(){
+	    return next.getNext().equals(null);
+	}
+	public T next(){
+	    return next.getData();
+	}
+	public void remove(){
+	}
+    }
+}
