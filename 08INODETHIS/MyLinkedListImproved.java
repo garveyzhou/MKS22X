@@ -1,10 +1,10 @@
-import jav.util.*;
+import java.util.*;
 public class MyLinkedListImproved<T> extends Comparable<T> implements Iterable<T>{
     private Node first;
     private Node last;
     private int size;
     
-    public MyLinkedList(){
+    public MyLinkedListImproved(){
 	size = 0;
     }
     
@@ -40,7 +40,7 @@ public class MyLinkedListImproved<T> extends Comparable<T> implements Iterable<T
 	if( index >= size || index < 0){
 	    throw new IndexOutOfBoundsException();
 	}
-	Integer v = getNode(index).getData();
+	T v = getNode(index).getData();
 	getNode(index).setData(value);
 	return v;
     }
@@ -188,7 +188,7 @@ public class MyLinkedListImproved<T> extends Comparable<T> implements Iterable<T
 	}
     }
 
-    public Iterator<t> iterator{
+    public Iterator<T> iterator(){
 	return new Iter(first);
     }
 
@@ -198,7 +198,30 @@ public class MyLinkedListImproved<T> extends Comparable<T> implements Iterable<T
 	}
 	T max = first.getData();
 	int index  = 0;
-	for(Node n : 
-	    
+	int maxIndex = 0;
+	for(T data : this){
+	    if(data.compareTo(max) > 0){
+		max = data;
+		maxIndex = index;
+	    }
+	    index++;
+	}
+	return maxIndex;   
+    }
+    public int min(){
+	if(size == 0){
+	    return -1;
+	}
+	T min = first.getData();
+	int index  = 0;
+	int minIndex = 0;
+	for(T data : this){
+	    if(data.compareTo(min) < 0){
+		min = data;
+		minIndex = index;
+	    }
+	    index++;
+	}
+	return minIndex ; 
     }
 }
