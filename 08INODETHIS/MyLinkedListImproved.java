@@ -1,5 +1,5 @@
 import java.util.*;
-public class MyLinkedListImproved<T> extends Comparable<T> implements Iterable<T>{
+public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T>{
     private Node first;
     private Node last;
     private int size;
@@ -71,7 +71,7 @@ public class MyLinkedListImproved<T> extends Comparable<T> implements Iterable<T
 	size++;
     }
     
-    public boolean add(Integer value){
+    public boolean add(T value){
 	Node a = new Node(value);
 	if (size == 0){
 	    first = a;
@@ -102,7 +102,7 @@ public class MyLinkedListImproved<T> extends Comparable<T> implements Iterable<T
 	    throw new IndexOutOfBoundsException();
 	}
 	Node current = getNode(index);
-	Integer rm = current.getData();
+	T rm = current.getData();
 	if(size == 1){
 	    first  = null;
 	    last = null;
@@ -123,7 +123,7 @@ public class MyLinkedListImproved<T> extends Comparable<T> implements Iterable<T
 	return rm;
     }
     
-    public Integer IndexOf(T value){
+    public int indexOf(T value){
 	Node current = first;
 	for(int i = 0; i<size; i++){
 	    if(current.getData().equals(value)){
@@ -179,10 +179,15 @@ public class MyLinkedListImproved<T> extends Comparable<T> implements Iterable<T
 	    next = n;
 	}
 	public boolean hasNext(){
-	    return next.getNext().equals(null);
+	    return next != null;
 	}
 	public T next(){
-	    return next.getData();
+	    if(hasNext()){
+		T a = next.getData();
+		next = next.getNext();
+		return a;
+	    }
+	    throw new IndexOutOfBoundsException();
 	}
 	public void remove(){
 	}
@@ -223,5 +228,38 @@ public class MyLinkedListImproved<T> extends Comparable<T> implements Iterable<T
 	    index++;
 	}
 	return minIndex ; 
+    }
+    public void concat(MyLinkedListImproved<T> other){
+	if(other.size() > 0){
+	    if(this.size() == 0){
+		first = other.first;
+		last = other.last;
+	    }
+	    else{
+		last.setNext(other.first);
+		other.first.setPrev(last);
+		last = other.last;
+	    }
+	    size += other.size();
+	    other.clear();
+	}
+    }
+    //Crystal's driver
+    public static void main (String[] args){
+	MyLinkedListImproved<Integer> a = new MyLinkedListImproved<>();
+
+	System.out.println("Testing add(Integer value)");
+	for (int i = 0; i < 10; i++){
+	    a.add(new Integer(i));
+	    System.out.println("size: " + a.size() + " LinkedList: " + a.toString());
+	} //adds the integers from 0 to 9 inclusive and prints out the LinkedList
+	for (int i = 0; i < 10; i++){
+	    a.add(new Integer(i));
+	}
+
+	for(Integer i: a){
+	    System.out.print(i + " ");
+	}
+	System.out.println(a.min() + " " + a.max());
     }
 }
