@@ -1,7 +1,7 @@
 import java.util.*;
 public class Calculator{
-
-    public static double eval(String e){
+    @SuppressWarnings("unchecked")
+    public static Double eval(String e){
 	int numTokens = 1;
 	for(int i = 0; i < e.length(); i++){
 	    if(e.substring(i,i+1).equals(" ")){
@@ -13,19 +13,40 @@ public class Calculator{
 	for(int i = 0; i< e.length(); i++){
 	    String current = "";
 	    if(e.substring(i,i+1).equals(" ")){
+		System.out.println(current);
 		tokens[index] = current;
 		current = "";
 		index++;
 	    }
 	    else{
-		current += s.charAt(i);
+		current += e.substring(i,i+1);
 	    }
 	}
 	
-	Stack<Double> values = new Stack();
+	Stack<Double> Tokens = new Stack();
+	for(int i = 0; i < tokens.length; i++){
+	    if(tokens[i].equals("+")){
+		Tokens.push(Tokens.pop() + Tokens.pop());
+	    }
+	    else if(tokens[i].equals("-")){
+		Tokens.push(Tokens.pop() - Tokens.pop());
+	    }
+	    else if(tokens[i].equals("*")){
+		Tokens.push(Tokens.pop() * Tokens.pop());
+	    }
+	    else if(tokens[i].equals("/")){
+		Tokens.push(Tokens.pop()/Tokens.pop());
+	    }
+	    else{Tokens.push(Double.parseDouble(tokens[i]));
+	    }
+	}
+
+	return Tokens.pop();
 	
-	return 0;
+	
     }
 
-
+    public static void main(String[] args){
+	System.out.println(eval("10 2 +"));
+    }
 }
