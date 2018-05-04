@@ -20,27 +20,22 @@ public class MyHeap<T extends Comparable<T>>{
     }
     
     public void add(T s){
-	if(size == data.length){
+	if(size >= data.length){
 	    resize();
 	}
 	data[size] = s;
 	size++;
-	pushUp();
+	swapUp(size - 1);
     }
     
     public T remove(){
 	T s = data[0];
-	swap(0, size()-1);
-	length--;	
-	pushDown();	
+	swap(0, size-1);
+	size--;	
+	swapDown(0);	
 	return s;
     }
-    
-    public void swap (int a, int b){
-	T c = data[a];
-	data[a] = data[b];
-	data[b] = c;
-    }
+
 
       @SuppressWarnings("unchecked")
       private void resize(){
@@ -54,7 +49,7 @@ public class MyHeap<T extends Comparable<T>>{
     public String toString(){
 	String str = "[ ";
 	for(int i = 0; i <size;i++){
-	    line += data[i] + " , ";
+	    str += data[i] + " , ";
 	}
 	return str + " ]";
     }
@@ -62,10 +57,55 @@ public class MyHeap<T extends Comparable<T>>{
     public T peek(){
 	return data[0];
     }
-
-    public void pushUp(){
+   
+    public void swap (int a, int b){
+	T c = data[a];
+	data[a] = data[b];
+	data[b] = c;
+    }
+    
+    public void swapUp(int index){
+	int parent = (index - 1)/2;
+	if(index != 0){
+	    if(max && data[index].compareTo(data[parent]) > 0){
+		swap(index,parent);}
+	    else if(max && data[index].compareTo(data[parent]) > 0){
+		swap(index,parent);}
+	    swapUp(parent);
+	}
+    }
+    public void swapDown(int index){
+	int left = index*2+1;
+	int right = index*2+2;
+	if( right < size){
+	    if (max){
+		if(data[left].compareTo(data[right]) < 0){
+		    if(data[index].compareTo(data[left]) < 0){
+			swap(index, left);	    
+			swapDown(left);
+		    }
+		}
+		else{if(data[index].compareTo(data[right]) < 0){
+			swap(index, right);	    
+			swapDown(right);		
+		    }
+		}
+	    }
+	    if(!max){
+		if(data[left].compareTo(data[right]) > 0){
+		    if(data[index].compareTo(data[left]) > 0){
+			swap(index, left);	    
+			swapDown(left);
+		    }
+		}
+		else{if(data[index].compareTo(data[right]) > 0){
+			swap(index, right);	    
+			swapDown(right);		
+		    }
+		}
+	    }
+	}
+    }
+}
+	    
 	
-    }
-    public void pushDown(){
-    }
-		     
