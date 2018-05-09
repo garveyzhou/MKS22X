@@ -46,6 +46,10 @@ public class Maze{
     // 'E' - end space (do not replace this)
     // '@' - part of solution
     // 'S' - starting space (do not replace this)
+    public void set(int r, int c , char a){
+	board[r][c] = a;
+    }
+    
     public String toString(){
 	String str = "";
 	for(int i = 0; i < board.length; i++){
