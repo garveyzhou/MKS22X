@@ -1,0 +1,71 @@
+public class Maze{
+  private Location start,end;
+  private char[][] board;
+
+    public Maze(String mazeText){
+	File f = new File(filename);
+	Scanner s = new Scanner(f);
+	String str = "";
+	int cols = 0;
+	int rows = 0;
+	while( s.hasNextLine()){
+	    String m = s.nextLine();
+	    cols = m.length();
+	    str += m ;
+	    rows ++;
+	}
+	maze = new char[rows][cols];
+	int startC = 0;
+	int endC = 0;
+	int i = 0;
+	for(int r = 0; r < rows; r++){
+	    for(int c = 0;c <cols; c++){
+		if(str.charAt(i) == 'S'){
+		    startC++;
+		    start = new Location(c,r,null);
+		}
+		if(str.charAt(i) == 'E'){
+		    endC++;
+		    end = new Location(c,r,null);
+		}
+		maze[r][c] = str.charAt(i);
+		i++;
+	    }
+	}
+	if( start != 1 || end != 1){
+	    throw new IllegalStateException();
+	}
+  }
+
+  // '#' - wall 
+  // ' ' - open space
+  // '?' - frontier space
+  // '.' - visited space
+  // 'E' - end space (do not replace this)
+  // '@' - part of solution
+  // 'S' - starting space (do not replace this)
+  public String toString(){
+  }
+   
+  // Work on this method as a group! 
+  public String toStringColor(){
+  }
+
+  //return a list of Locations that are:
+  // adjacent to n and  not visited
+  // all the Locations in this list should have their previous set to n.
+  public Location[] getNeighbors(Location n){
+    return null;
+  }
+
+  public Location getStart(){
+    return null;
+  }
+
+  public Location getEnd(){
+    return null;
+  }
+
+
+
+}
