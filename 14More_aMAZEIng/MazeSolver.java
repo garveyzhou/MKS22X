@@ -38,13 +38,21 @@ public class MazeSolver{
 	      maze.set(neighbors[i].getY(),neighbors[i].getX(),'?');
 	  }
 	      maze.set(next.getY(),next.getX(),'.');
-      }	     
-	      		  
-      
-    return false;
-  }
+      }
+      return false;
+      }
 
-  public String toString(){
-    return maze.toString();
-  }
+
+    public String toString(){
+	return maze.toString();
+    }
+
+    public static void main(String[] args){
+	try{
+	MazeSolver a = new MazeSolver("maze.txt");
+	System.out.println(a.solve(0));
+	}
+	catch (FileNotFoundException e){
+	}
+    }
 }
