@@ -37,14 +37,14 @@ public class MyHeap<T extends Comparable<T>>{
     }
 
 
-      @SuppressWarnings("unchecked")
-      private void resize(){
-	  T[] temp = (T[])new Comparable[2*size];
-	  for (int i = 0; i < size; i++){
-	      temp[i] = data[i];
-	  }
-	  data = temp;	
-      }
+    @SuppressWarnings("unchecked")
+    private void resize(){
+	T[] temp = (T[])new Comparable[2*size];
+	for (int i = 0; i < size; i++){
+	    temp[i] = data[i];
+	}
+	data = temp;	
+    }
 
     public String toString(){
 	String str = "[ ";
@@ -74,6 +74,8 @@ public class MyHeap<T extends Comparable<T>>{
 	    swapUp(parent);
 	}
     }
+
+    
     public void swapDown(int index){
 	int left = index*2+1;
 	int right = index*2+2;
@@ -106,6 +108,38 @@ public class MyHeap<T extends Comparable<T>>{
 	    }
 	}
     }
+
+    
+    private boolean compares(boolean maxmin, T child, T parent){
+	if(maxmin){
+	    return child.compareTo(parent) > 0;
+	}
+	else{
+	    return child.compareTo(parent) < 0;
+	}
+    }
+    
+    public static void main(String[] args){
+	MyHeap<String> heap = new MyHeap<>(false);
+	heap.add("f");
+	System.out.println(heap);
+	heap.add("d");
+	System.out.println(heap);
+	heap.add("c");
+	System.out.println(heap);
+	heap.add("b");
+	System.out.println(heap);
+	System.out.println(heap.remove());
+	System.out.println(heap);
+	System.out.println(heap.remove());
+	System.out.println(heap);
+	System.out.println(heap.remove());
+	System.out.println(heap);
+	System.out.println(heap.remove());
+	System.out.println(heap);
+  
+    }
+    
 }
 	    
 	
