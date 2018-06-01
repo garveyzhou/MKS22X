@@ -102,14 +102,6 @@ public class MyHeap<T extends Comparable<T>>{
     }
 
     
-    private boolean compares(boolean maxmin, T child, T parent){
-	if(maxmin){
-	    return child.compareTo(parent) > 0;
-	}
-	else{
-	    return child.compareTo(parent) < 0;
-	}
-    }
     
     public static void main(String[] args){
 	MyHeap<String> heap = new MyHeap<>(false);

@@ -10,11 +10,7 @@ public class RunningMedian{
     public void add(double n){
 	if(min.size() == 0){
 	    min.add(n);
-	}
-	else if(max.size() == 0){
-	    max.add(n);
-	}
-	
+	}	
 	else if (getMedian() > n){
 	    min.add(n);
 	}
