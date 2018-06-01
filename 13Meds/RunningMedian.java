@@ -1,10 +1,10 @@
 public class RunningMedian{
     private MyHeap<Double> max;
     private MyHeap<Double> min;
-    
+
     public RunningMedian(){
-	min = new MyHeap<>();
-	max = new MyHeap<>(false);
+	min = new MyHeap<>(false);
+	max = new MyHeap<>();
     }
 
     public void add(double n){
@@ -15,10 +15,10 @@ public class RunningMedian{
 	    max.add(n);
 	}
 	
-	else if (min.peek() > n){
+	else if (getMedian() > n){
 	    min.add(n);
 	}
-	else if( max.peek() < n){
+	else if(getMedian() < n){
 	    max.add(n);
 	}
 	
@@ -37,7 +37,10 @@ public class RunningMedian{
 	else if( max.size()> min.size()){
 	    return max.peek();
 	}
-	else{ return (max.peek() + min.peek())/2;
+	else{
+	    System.out.println(max.peek());
+	    System.out.println(min.peek());
+	    return (max.peek() + min.peek())/2;
 	}
     }
     public static void main(String[]args){

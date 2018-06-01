@@ -55,7 +55,7 @@ public class MyHeap<T extends Comparable<T>>{
     }
 
     public T peek(){
-	return data[0];
+	return data[size - 1];
     }
    
     public void swap (int a, int b){
