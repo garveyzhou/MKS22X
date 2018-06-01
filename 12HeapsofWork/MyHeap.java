@@ -24,8 +24,8 @@ public class MyHeap<T extends Comparable<T>>{
 	    resize();
 	}
 	data[size] = s;
-	size++;
 	swapUp(size - 1);
+	size++;
     }
     
     public T remove(){
@@ -69,7 +69,7 @@ public class MyHeap<T extends Comparable<T>>{
 	if(index != 0){
 	    if(max && data[index].compareTo(data[parent]) > 0){
 		swap(index,parent);}
-	    else if(max && data[index].compareTo(data[parent]) > 0){
+	    else if(!max && data[index].compareTo(data[parent]) > 0){
 		swap(index,parent);}
 	    swapUp(parent);
 	}
@@ -79,34 +79,26 @@ public class MyHeap<T extends Comparable<T>>{
     public void swapDown(int index){
 	int left = index*2+1;
 	int right = index*2+2;
-	if( right < size){
-	    if (max){
-		if(data[left].compareTo(data[right]) < 0){
-		    if(data[index].compareTo(data[left]) < 0){
-			swap(index, left);	    
-			swapDown(left);
-		    }
-		}
-		else{if(data[index].compareTo(data[right]) < 0){
-			swap(index, right);	    
-			swapDown(right);		
-		    }
-		}
+	if(max){
+	    if((left < size && data[index].compareTo(data[left]) < 0)&&(right >= size || data[right].compareTo(data[left] <= 0))){
+		swap(index, left);	    
+		pushDown(left);
 	    }
-	    if(!max){
-		if(data[left].compareTo(data[right]) > 0){
-		    if(data[index].compareTo(data[left]) > 0){
-			swap(index, left);	    
-			swapDown(left);
-		    }
-		}
-		else{if(data[index].compareTo(data[right]) > 0){
-			swap(index, right);	    
-			swapDown(right);		
-		    }
-		}
+	    if((right < size && data[index].compareTo(data[right]) < 0) && (left >= size || data[left].compareTo(data[right] <= 0))){
+		swap(index, right);	    
+		pushDown(right);
 	    }
 	}
+	else{
+	    if((left < size && data[index].compareTo(data[left]) > 0)&&(right >= size || data[right].compareTo(data[left] >= 0))){
+		swap(index, left);	    
+		pushDown(left);
+	    }
+	    if((right < size && data[index].compareTo(data[right]) > 0)&&(left >= size || data[left].compareTo(data[right] >= 0))){
+		swap(index, right);	    
+		pushDown(right);
+	    }
+	    
     }
 
     
