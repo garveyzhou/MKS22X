@@ -24,15 +24,14 @@ public class MyHeap<T extends Comparable<T>>{
 	    resize();
 	}
 	data[size] = s;
-	swapUp(size - 1);
+	swapUp(size);
 	size++;
     }
     
     public T remove(){
-	T s = data[0];
-	swap(0, size-1);
-	size--;	
-	swapDown(0);	
+	T s = data[size-1];
+	data[size - 1] = null;
+	size--;		
 	return s;
     }
 
@@ -66,10 +65,10 @@ public class MyHeap<T extends Comparable<T>>{
     
     public void swapUp(int index){
 	int parent = (index - 1)/2;
-	if(index != 0 && parent > 0){
+	if(index != 0 && parent >= 0){
 	    if(max && data[index].compareTo(data[parent]) > 0){
 		swap(index,parent);}
-	    else if(!max && data[index].compareTo(data[parent]) > 0){
+	    else if(!max && data[index].compareTo(data[parent]) <0){
 		swap(index,parent);}
 	    swapUp(parent);
 	}
@@ -100,8 +99,6 @@ public class MyHeap<T extends Comparable<T>>{
 	    }
 	}   
     }
-
-    
     
     public static void main(String[] args){
 	MyHeap<String> heap = new MyHeap<>(false);
