@@ -29,9 +29,10 @@ public class MyHeap<T extends Comparable<T>>{
     }
     
     public T remove(){
-	T s = data[size-1];
-	data[size - 1] = null;
-	size--;		
+	T s = data[0];
+	swap(0,size-1);
+	size--;	
+	swapDown(0);	
 	return s;
     }
 
@@ -54,7 +55,7 @@ public class MyHeap<T extends Comparable<T>>{
     }
 
     public T peek(){
-	return data[size-1];
+	return data[0];
     }
    
     public void swap (int a, int b){
@@ -68,7 +69,7 @@ public class MyHeap<T extends Comparable<T>>{
 	if(index != 0 && parent >= 0){
 	    if(max && data[index].compareTo(data[parent]) > 0){
 		swap(index,parent);}
-	    else if(!max && data[index].compareTo(data[parent]) <0){
+	    else if(!max && data[index].compareTo(data[parent]) < 0){
 		swap(index,parent);}
 	    swapUp(parent);
 	}
